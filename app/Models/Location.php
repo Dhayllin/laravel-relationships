@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
-    //
+    public function coutry(){
+        return $this->belongsTo(Coutry::class);
+    }
 }
