@@ -12,7 +12,7 @@ class OneToOneController extends Controller
 {
     public function oneToOne(){
 
-        $coutry = Coutry::where('name','China')->get()->first();
+        $coutry = Coutry::where('name','EUA')->get()->first();
 
         echo   $coutry->name;       
         $location = $coutry->location;
