@@ -12,9 +12,8 @@
 */
 
 Route::get('one-to-one','OneToOneController@oneToOne');
-
 Route::get('one-to-one-inverse','OneToOneController@oneToOneInverse');
-
+Route::get('one-to-one-inset','OneToOneController@oneToOneInsert');
 
 Route::get('/', function () {
     return view('welcome');

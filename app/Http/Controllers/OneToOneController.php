@@ -14,8 +14,7 @@ class OneToOneController extends Controller
 
         $coutry = Coutry::where('name','China')->get()->first();
 
-        echo   $coutry->name;
-       
+        echo   $coutry->name;       
         $location = $coutry->location;
 
         echo "<br>Latitude: {$location->latitude}<br>";
@@ -23,6 +22,7 @@ class OneToOneController extends Controller
     }
 
     public function oneToOneInverse(){
+
         $latitude =123 ;
         $longitude = 312;
 
@@ -30,7 +30,32 @@ class OneToOneController extends Controller
                                
         $coutry = $location->coutry;
 
-        return compact('coutry');
-       
+        return compact('coutry');       
+    }
+
+    public function oneToOneInsert(){
+        
+        $dataForm = [
+            'name'      => 'Reino Unido',
+            'latitude'  => 0,
+            'longitude' => 0,
+        ];
+
+        $coutry = Coutry::create($dataForm);
+        
+    
+        /* MODO 1 
+        
+        $location =new  Location;
+        $location->latitude = $dataForm['latitude'];
+        $location->longitude = $dataForm['longitude'];
+        $location->coutry_id = $coutry->id;
+        $saveLocation = $location->save(); */
+
+        /* MODO 2 */
+
+        $location = $coutry->location()->create($dataForm);
+        
+        dd($location);        
     }
 }
